@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 
+import sys
+sys.path.insert(0, '../Attention/')
+
 import pandas as pd 
 from sklearn.datasets import fetch_california_housing
 from sklearn.model_selection import train_test_split
 from attention.encoder import Encoder
-from optimize.trainer import train_regression
-from optimize.tester import test_regression
+from optimize.trainer import train_toy_regression
+from optimize.tester import test_toy_regression
 import torch.nn as nn
 import torch.nn.functional as F
 import torch
@@ -41,15 +44,14 @@ embed_dim = 8 # this is basically the number of features
 head_dim = 16
 model = Net(n_blocks, n_heads, embed_dim, head_dim)
 
-
 print('Training...')
 epochs = 20
 lr = 0.001
-model = train_regression(model, X_train, y_train, EPOCHS=epochs, lr=lr)
+model = train_toy_regression(model, X_train, y_train, EPOCHS=epochs, lr=lr)
 print()
 
 print('Testing...')
-test_loss = test_regression(model, X_test, y_test)
+test_loss = test_toy_regression(model, X_test, y_test)
 print('Test Loss: ', test_loss.item())
 print()
 

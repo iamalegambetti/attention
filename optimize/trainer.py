@@ -1,7 +1,7 @@
 import torch.optim as optim
 import torch.nn as nn
 
-def train_regression(model, X_train, y_train, EPOCHS = 100, lr = 0.001):
+def train_toy_regression(model, X_train, y_train, EPOCHS = 100, lr = 0.001):
     """
     Toy function to train a regression model using the given training data.
     """

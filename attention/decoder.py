@@ -1,7 +1,17 @@
 import torch 
 import torch.nn as nn
 import torch.nn.functional as F
-from encoder import FeedForward
+
+class FeedForward(nn.Module):
+    def __init__(self, embed_dim):
+        super(FeedForward, self).__init__()
+        self.fc1 = nn.Linear(embed_dim, embed_dim * 4)
+        self.fc2 = nn.Linear(embed_dim * 4, embed_dim)
+
+    def forward(self, x):
+        x = self.fc1(x)
+        x = F.relu(x)
+        return self.fc2(x)
 
 class MaskedAttentionHead(nn.Module):
     def __init__(self, embed_dim, head_dim):

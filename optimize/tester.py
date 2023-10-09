@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 
 @torch.no_grad()
-def test_regression(model, X_test, y_test):
+def test_toy_regression(model, X_test, y_test):
     """
     Test a regression model using the given test data.
     """

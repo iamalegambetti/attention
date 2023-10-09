@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
 import torch
+import sys
+sys.path.insert(0, '../Attention/')
 from attention.encoder import Encoder
 
 n_layers = 8
